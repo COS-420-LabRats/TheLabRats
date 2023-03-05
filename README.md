@@ -2,7 +2,7 @@
 //Main repo for COS420 project.
 //This repository is for an app created by the COS 420 group, "The Lab Rats". The app is "RoomUp", a mobile app designed to connect people looking for roommates. 
 
-//For deliverable documents, please refer to the file named TheLabRats_Deliverable_Documents, in which the files for each deliverable is in their own zip file.
+//For deliverable documents, please refer to the file named TheLabRats_Deliverable_Documents, in which the files for each deliverable is in their own zip file. You must download the zip files to see the content for each deliverable.
 
 //To use this code, it is required to first install Android studio; this can be done at: 
 //https://developer.android.com/studio?utm_source=android-studio&authuser=1
