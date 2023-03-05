@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/home_24"
+        android:title="Feed" />
+
+    <item
+        android:id="@+id/feed"
+        android:title="Chat"
+        android:textColor="#ffffff"
+        android:icon="@drawable/chat_24" />
+
+    <item
+        android:id="@+id/chats"
+        android:icon="@drawable/person_24"
+        android:title="@string/profile"
+        />
+</menu>
