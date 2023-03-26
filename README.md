@@ -6,7 +6,7 @@
 
 //For deliverable documents, please refer to the file named //TheLabRats_Deliverable_Documents, in which the files for each deliverable are in their own //zip file. You must download the zip files to see the content for each deliverable.
 
-//Most recent up-to-date deliverable documents (3/5/2023): //TheLabRats_Deliverable_2_[Documents].zip
+//Most recent up-to-date deliverable documents (3/26/2023): //TheLabRats_Deliverable_3_[Documents].zip
 
 //Dependencies: 
 //dependencies necessary for log-in implementation using firebase
