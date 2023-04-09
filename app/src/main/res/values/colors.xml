@@ -2,8 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="charcoal">#3D4C5B</color>
+    <color name="lightGrey">#767778</color>
+
     <color name="yellow">#FFC801</color>
-    <color name="RU_Teal">#42696E</color>
-    <color name="RU_Orange">#DAA271</color>
-    <color name="RU_Grey">#C1BFC1</color>
+
+    <color name="Teal">#42696E</color>
+    <color name="DarkGreen">#34474A</color>
+
+    <color name="LightOrange">#FFE0AE</color>
+    <color name="DarkOrange">#F8C188</color>
+
+    <color name="Lavender">#807DA6</color>
+
 </resources>
