@@ -22,5 +22,9 @@
 //Cloning into your local repository:
 //git clone "https://github.com/COS-420-LabRats/TheLabRats.git" in your cmd line
 
+//Citations: 
+Bottom menu bar: https://www.youtube.com/watch?v=EwfLZsSSElE
+Sign In & Set Up: https://www.youtube.com/watch?v=idbxxkF1l6k
+
 
  
