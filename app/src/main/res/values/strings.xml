@@ -31,4 +31,19 @@
     <string name="gender_txt">Gender</string>
     <string name="bio_txt">Biography</string>
     <string name="next_button">Next</string>
+
+    <!-- Strings used for Signin and SignUp UI-->
+    <string name="Icon">SignIn or SignUp Icon</string>
+    <string name="SignIn_txt1">Welcome</string>
+    <string name="SignIn_txt2">Login to your account</string>
+    <string name="SignUp_txt1">Register</string>
+    <string name="SignUp_txt2">Create your account</string>
+    <string name="SignIn_email">Type your Email</string>
+    <string name="SignIn_password">Type your Password</string>
+    <string name="SignIn_confirm_password">Retype your Password</string>
+    <string name="Register_txtButton">Not Registered Yet , Sign Up !</string>
+    <string name="SignIn_txtButton">Already Registered , Sign In !</string>
+    <string name="SignUp_Button">Sign Up</string>
+    <string name="SignIn_Button">Sign In</string>
+
 </resources>
