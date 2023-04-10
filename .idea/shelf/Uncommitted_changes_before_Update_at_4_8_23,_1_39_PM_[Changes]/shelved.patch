@@ -1,0 +1,340 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1678215387254)
++++ b/.idea/compiler.xml	(date 1678215387254)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="11" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1678215889738)
++++ b/.idea/gradle.xml	(date 1678215889738)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1678215387262)
++++ b/.idea/vcs.xml	(date 1678215387262)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1678215387248)
++++ b/.idea/misc.xml	(date 1678215387248)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .gradle/buildOutputCleanup/cache.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/.gradle/buildOutputCleanup/cache.properties b/.gradle/buildOutputCleanup/cache.properties
+new file mode 100644
+--- /dev/null	(date 1678215381908)
++++ b/.gradle/buildOutputCleanup/cache.properties	(date 1678215381908)
+@@ -0,0 +1,2 @@
++#Tue Mar 07 13:56:21 EST 2023
++gradle.version=7.5
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1680568305789)
++++ b/.idea/workspace.xml	(date 1680568305789)
+@@ -0,0 +1,214 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AndroidLayouts">
++    <shared>
++      <config />
++    </shared>
++  </component>
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="NONE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="27203b7a-9b48-4b76-99b2-ae707b54b63c" name="Changes" comment="SignUp and SignIn feature&#10;Links app to Firebase">
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/gc.properties" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileChanges/last-build.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/7.5/gc.properties" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/rhiannnon/.android/avd/Pixel_2_API_30.avd]" />
++  <component name="ExternalProjectsData">
++    <projectState path="$PROJECT_DIR$">
++      <ProjectState />
++    </projectState>
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++        <option value="Kotlin Class" />
++        <option value="layoutResourceFile" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <favorite-branches>
++      <branch-storage>
++        <map>
++          <entry type="LOCAL">
++            <value>
++              <list>
++                <branch-info repo="$PROJECT_DIR$" source="log-in" />
++              </list>
++            </value>
++          </entry>
++        </map>
++      </branch-storage>
++    </favorite-branches>
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
++  </component>
++  <component name="ProjectId" id="2MhMT4RqemOtO9vorbBfXvM9kbF" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
++    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
++    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
++      <recent name="$PROJECT_DIR$/app" />
++    </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
++      <module name="My_Application.app.main" />
++      <option name="DEPLOY" value="true" />
++      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
++      <option name="DEPLOY_AS_INSTANT" value="false" />
++      <option name="ARTIFACT_NAME" value="" />
++      <option name="PM_INSTALL_OPTIONS" value="" />
++      <option name="ALL_USERS" value="false" />
++      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
++      <option name="CLEAR_APP_STORAGE" value="false" />
++      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
++      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
++      <option name="MODE" value="default_activity" />
++      <option name="CLEAR_LOGCAT" value="false" />
++      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
++      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
++      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
++      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
++      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
++      <option name="DEBUGGER_TYPE" value="Auto" />
++      <Auto>
++        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
++        <option name="SHOW_STATIC_VARS" value="true" />
++        <option name="WORKING_DIR" value="" />
++        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
++        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
++      </Auto>
++      <Hybrid>
++        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
++        <option name="SHOW_STATIC_VARS" value="true" />
++        <option name="WORKING_DIR" value="" />
++        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
++        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
++      </Hybrid>
++      <Java />
++      <Native>
++        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
++        <option name="SHOW_STATIC_VARS" value="true" />
++        <option name="WORKING_DIR" value="" />
++        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
++        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
++      </Native>
++      <Profilers>
++        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
++        <option name="STARTUP_PROFILING_ENABLED" value="false" />
++        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
++        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
++        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
++        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
++      </Profilers>
++      <option name="DEEP_LINK" value="" />
++      <option name="ACTIVITY_CLASS" value="" />
++      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
++      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
++      <method v="2">
++        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
++      </method>
++    </configuration>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="27203b7a-9b48-4b76-99b2-ae707b54b63c" name="Changes" comment="" />
++      <created>1678215364233</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1678215364233</updated>
++    </task>
++    <task id="LOCAL-00001" summary="Initial commmit">
++      <created>1678215972439</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1678215972439</updated>
++    </task>
++    <task id="LOCAL-00002" summary="test commit">
++      <created>1678217416862</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1678217416862</updated>
++    </task>
++    <task id="LOCAL-00003" summary="SignUp and SignIn feature&#10;Links app to Firebase">
++      <created>1679882552513</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1679882552513</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
++    <servers />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Initial commmit" />
++    <MESSAGE value="test commit" />
++    <MESSAGE value="SignUp and SignIn feature&#10;Links app to Firebase" />
++    <option name="LAST_COMMIT_MESSAGE" value="SignUp and SignIn feature&#10;Links app to Firebase" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1678215387029)
++++ b/.idea/.name	(date 1678215387029)
+@@ -0,0 +1,1 @@
++My Application
+\ No newline at end of file
+diff --git a/.gradle/vcs-1/gc.properties b/.gradle/vcs-1/gc.properties
+new file mode 100644
+diff --git a/.gradle/7.5/gc.properties b/.gradle/7.5/gc.properties
+new file mode 100644
+diff --git a/.gradle/7.5/dependencies-accessors/gc.properties b/.gradle/7.5/dependencies-accessors/gc.properties
+new file mode 100644
