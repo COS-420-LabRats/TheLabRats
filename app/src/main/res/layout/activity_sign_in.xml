@@ -16,8 +16,8 @@
 
     <ImageView
         android:id="@+id/ProfilePic"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/signup_screen"
         android:contentDescription="@string/Icon"
