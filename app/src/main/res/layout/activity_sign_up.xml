@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="@string/SignIn_txt2"
+                android:text="@string/SignUp_txt2"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp"
