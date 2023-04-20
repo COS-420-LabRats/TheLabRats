@@ -32,7 +32,7 @@
     <string name="bio_txt">Biography</string>
     <string name="next_button">Next</string>
 
-    <!-- Strings used for Signin and SignUp UI-->
+    <!-- Strings used for Signin, SignUp, and Start Screen UI-->
     <string name="Icon">SignIn or SignUp Icon</string>
     <string name="SignIn_txt1">Welcome</string>
     <string name="SignIn_txt2">Login to your account</string>
@@ -45,5 +45,10 @@
     <string name="SignIn_txtButton">Already Registered , Sign In !</string>
     <string name="SignUp_Button">Sign Up</string>
     <string name="SignIn_Button">Sign In</string>
+    <string name="StartScreenIcon">Start Screen Icon</string>
+    <string name="StartScreenTxt">Need help finding a roommate?\nSign in or sign up!</string>
+    <string name="StartScreenPplWaving">Start Screen Person Waving</string>
+
+
 
 </resources>
