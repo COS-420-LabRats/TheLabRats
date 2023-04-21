@@ -8,51 +8,54 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.myapplication.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
+@Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
     private lateinit var logout: Button
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var viewBinding: FragmentHomeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        logout = view.findViewById(R.id.logoutButton)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        viewBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        logout = viewBinding.logoutButton
         logout.setOnClickListener { logOut() }
-
-        // Create a new instance of Toolbar
-        val toolbar = Toolbar(requireContext())
-        // Set the toolbar as the support action bar for the activity
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        // Set the title for the toolbar
-        toolbar.title = "My Toolbar Title"
-
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Set up the options menu for the toolbar
-        toolbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.Settings -> {
-                    Toast.makeText(context, "You clicked Settings", Toast.LENGTH_LONG).show()
-                    true
-                }
-                R.id.UpdateProfile -> {
-                    Toast.makeText(context, "You clicked Update Profile", Toast.LENGTH_LONG)
-                        .show()
-                    true
-                }
-                R.id.UpdatePreferences -> {
-                    Toast.makeText(context, "You clicked Update Preferences", Toast.LENGTH_LONG)
-                        .show()
-                    true
-                }
-                else -> false
+        val toolbar: Toolbar = viewBinding.HomeToolbar
+        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+
+        setHasOptionsMenu(true)
+
+        return viewBinding.root
+    }
+
+    @Deprecated("Deprecated in Java", ReplaceWith("inflater.inflate(R.menu.top_menu, menu)"))
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_menu, menu)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.Settings -> {
+                Toast.makeText(context, "You clicked Settings", Toast.LENGTH_LONG).show()
+                true
             }
+            R.id.UpdateProfile -> {
+                Toast.makeText(context, "You clicked Update Profile", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.UpdatePreferences -> {
+                Toast.makeText(context, "You clicked Update Preferences", Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
