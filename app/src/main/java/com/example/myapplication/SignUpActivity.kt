@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.ktx.Firebase
 
 class SignUpActivity: AppCompatActivity() {
 
@@ -28,6 +31,7 @@ class SignUpActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        var db = Firebase.firestore
         binding.button.setOnClickListener{
             val email = binding.emailEt.text.toString()
             val pass = binding.passET.text.toString()
@@ -54,6 +58,23 @@ class SignUpActivity: AppCompatActivity() {
 
             }
 
+            /*val userMap = hashMapOf(
+
+                "email" to email,
+                "password" to pass
+            )
+
+
+
+            db.collection("Users").document().set(userMap)
+                .addOnSuccessListener{
+                    Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show()
+                    //Did not include et vars
+                }
+
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
+                } */
         }
 
     }
