@@ -48,7 +48,8 @@
     <string name="StartScreenIcon">Start Screen Icon</string>
     <string name="StartScreenTxt">Need help finding a roommate?\nSign in or sign up!</string>
     <string name="StartScreenPplWaving">Start Screen Person Waving</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

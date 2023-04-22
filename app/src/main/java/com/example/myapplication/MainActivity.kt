@@ -2,22 +2,45 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
-import android.view.View
-import android.widget.Button
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var logout: Button
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        logout = findViewById(R.id.logoutButton)
         firebaseAuth = FirebaseAuth.getInstance()
+
+        bottomNavigationView = findViewById(R.id.BottomNav)
+
+        //This will show how many messages a user has on read once we figure out that number:
+        val badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.Chat)
+        badgeDrawable.isVisible = true
+        badgeDrawable.number = 10
+
+        supportFragmentManager.beginTransaction().replace(R.id.container, HomeFragment()).commit()
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.Home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.container, HomeFragment()).commit()
+                    true
+                }
+                R.id.Chat -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.container, ChatFragment()).commit()
+                    true
+                }
+                R.id.Swipe -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.container, SwipeFragment()).commit()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onStart() {
@@ -30,15 +53,4 @@ class MainActivity : AppCompatActivity() {
         }
         // Otherwise, the user is already logged in, and we can continue displaying the main activity
     }
-
-    fun logOut(view: View) {
-        // Log the user out of Firebase Authentication
-        firebaseAuth.signOut()
-        // Launch the sign-in activity
-        startActivity(Intent(this, SignInActivity::class.java))
-        finish() // Close the current activity
-    }
-
 }
-
-
