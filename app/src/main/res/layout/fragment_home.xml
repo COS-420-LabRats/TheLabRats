@@ -17,7 +17,7 @@
         app:titleMarginStart="30dp"
         app:menu="@menu/top_menu"/>
 
-    <TextView
+    <EditText
         android:id="@+id/TestView"
         android:textStyle="bold"
         android:layout_width="wrap_content"
