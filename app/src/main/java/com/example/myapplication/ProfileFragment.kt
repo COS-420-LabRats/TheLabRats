@@ -2,14 +2,15 @@ package com.example.myapplication
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +36,41 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val accSpinner = view.findViewById<Spinner>(R.id.acc_txt)
+        val genderSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
+
+        val accOptions = arrayOf("Account Type", "Student", "Regular")
+        val genderOptions = arrayOf("Gender", "Female", "Male", "Prefer not to respond")
+
+        val accAdapter = object : ArrayAdapter<String>(
+            requireContext(),
+            R.layout.spinner_item_disabled,
+            accOptions
+        ) {
+            override fun isEnabled(position: Int): Boolean {
+                return position != 0 // disable the first position
+            }
+        }
+
+        val genderAdapter = object : ArrayAdapter<String>(
+            requireContext(),
+            R.layout.spinner_item_disabled,
+            genderOptions
+        ) {
+            override fun isEnabled(position: Int): Boolean {
+                return position != 0 // disable the first position
+            }
+        }
+
+        accAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        accSpinner.adapter = accAdapter
+        accSpinner.setSelection(0, false)
+
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        genderSpinner.adapter = genderAdapter
+        genderSpinner.setSelection(0, false)
+
 
         val saveButton = view.findViewById<Button>(R.id.save_button)
         saveButton.setOnClickListener {
@@ -71,9 +107,9 @@ class ProfileFragment : Fragment() {
 
                         val emailTextView = view.findViewById<TextView>(R.id.email_txt)
                         if (profile?.get("email") == null) {
-                            emailTextView.text = currentUser?.email.toString()
+                            emailTextView.text = currentUser.email.toString()
                         } else {
-                            emailTextView.text = profile?.get("email").toString()
+                            emailTextView.text = profile["email"].toString()
                         }
 
                         val phoneTextView = view.findViewById<TextView>(R.id.phone_txt)
@@ -86,6 +122,7 @@ class ProfileFragment : Fragment() {
 
                         val bioTextView = view.findViewById<TextView>(R.id.bio_txt)
                         bioTextView.text = profile?.get("biography").toString()
+                        bioTextView.movementMethod = ScrollingMovementMethod()
 
                     }
                 }
@@ -170,7 +207,7 @@ class ProfileFragment : Fragment() {
             "biography" to biography
         )
 
-        val id = currentUser?.uid
+        val id = currentUser.uid
         if (id != null) {
             db.collection("profile").document(id)
                 .set(profile)

@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
                 true
             }
             R.id.UpdateProfile -> {
-                Toast.makeText(context, "Update Profile feature coming soon.", Toast.LENGTH_LONG).show()
                 parentFragmentManager.beginTransaction().replace(R.id.container, ProfileFragment()).commit()
                 true
             }
