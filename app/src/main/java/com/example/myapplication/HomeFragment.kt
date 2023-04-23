@@ -35,6 +35,15 @@ class HomeFragment : Fragment() {
         return viewBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val profileCard = childFragmentManager.beginTransaction()
+        profileCard.replace(R.id.ProfileCard, ProfileCardFragment())
+        profileCard.commit()
+    }
+
+
     @Deprecated("Deprecated in Java", ReplaceWith("inflater.inflate(R.menu.top_menu, menu)"))
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.top_menu, menu)
