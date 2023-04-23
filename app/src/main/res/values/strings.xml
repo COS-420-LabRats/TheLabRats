@@ -24,13 +24,24 @@
     <string name="full_name_txt">FULL NAME</string>
     <string name="first_name_txt">First Name</string>
     <string name="last_name_txt">Last Name</string>
-    <string name="acc_txt">Account Type</string>
+    <string-array name="accountTypes">
+        <item>Account Type</item>
+        <item>Student</item>
+        <item>Regular</item>
+    </string-array>
+    <string name="acc_txt">Acc Txt</string>
     <string name="bday_txt">Birthday</string>
     <string name="email_txt">Email</string>
     <string name="phone_txt">Phone</string>
     <string name="gender_txt">Gender</string>
+    <string-array name="genderTypes">
+        <item>Gender</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Prefer not to respond</item>
+    </string-array>
     <string name="bio_txt">Biography</string>
-    <string name="next_button">Next</string>
+    <string name="save_button">Save</string>
 
     <!-- Strings used for Signin, SignUp, and Start Screen UI-->
     <string name="Icon">SignIn or SignUp Icon</string>
@@ -50,6 +61,7 @@
     <string name="StartScreenPplWaving">Start Screen Person Waving</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
 </resources>

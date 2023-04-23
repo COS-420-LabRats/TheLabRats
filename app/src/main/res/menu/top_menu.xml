@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Settings"
-        android:title="Settings"
-        android:icon="@drawable/empty_pic"
+        android:id="@+id/Notifications"
+        android:title="Notifications"
+        android:icon="@drawable/ic_bell"
         app:showAsAction="never" />
 
     <item
@@ -18,6 +18,18 @@
         android:id="@+id/UpdatePreferences"
         android:title="Update Preferences"
         android:icon="@drawable/ic_acc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Settings"
+        android:title="Settings"
+        android:icon="@drawable/empty_pic"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logoutButton"
+        android:title="Log Out"
+        android:icon="@drawable/ic_back_button"
         app:showAsAction="never" />
 
 

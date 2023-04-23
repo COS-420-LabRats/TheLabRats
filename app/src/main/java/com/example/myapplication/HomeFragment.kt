@@ -35,6 +35,15 @@ class HomeFragment : Fragment() {
         return viewBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val profileCard = childFragmentManager.beginTransaction()
+        profileCard.replace(R.id.ProfileCard, ProfileCardFragment())
+        profileCard.commit()
+    }
+
+
     @Deprecated("Deprecated in Java", ReplaceWith("inflater.inflate(R.menu.top_menu, menu)"))
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.top_menu, menu)
@@ -44,15 +53,23 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.Settings -> {
-                Toast.makeText(context, "You clicked Settings", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Settings feature coming soon.", Toast.LENGTH_LONG).show()
                 true
             }
             R.id.UpdateProfile -> {
-                Toast.makeText(context, "You clicked Update Profile", Toast.LENGTH_LONG).show()
+                parentFragmentManager.beginTransaction().replace(R.id.container, ProfileFragment()).commit()
                 true
             }
             R.id.UpdatePreferences -> {
-                Toast.makeText(context, "You clicked Update Preferences", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Update Preferences feature coming soon.", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.Notifications -> {
+                Toast.makeText(context, "Notifications feature coming soon.", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.logoutButton -> {
+                logOut()
                 true
             }
             else -> super.onOptionsItemSelected(item)

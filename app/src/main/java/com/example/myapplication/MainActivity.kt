@@ -1,8 +1,8 @@
 package com.example.myapplication
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,15 +27,18 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Home -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, HomeFragment()).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, HomeFragment()).commit()
                     true
                 }
                 R.id.Chat -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, ChatFragment()).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ChatFragment()).commit()
                     true
                 }
                 R.id.Swipe -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, SwipeFragment()).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, SwipeFragment()).commit()
                     true
                 }
                 else -> false
