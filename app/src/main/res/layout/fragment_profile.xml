@@ -11,6 +11,8 @@
         android:orientation="vertical">
 
         <!-- Shows Profile Pic and Name at the top -->
+
+        <!-- Area to edit profile -->
         <RelativeLayout
             android:layout_width="300dp"
             android:layout_height="275dp"
@@ -27,18 +29,17 @@
                 android:contentDescription="@string/profile_pic" />
             <!-- Shows Name at the top -->
             <TextView
-                android:id="@+id/Loading"
+                android:id="@+id/fullName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/ProfilePic"
                 android:padding="15dp"
-                android:textAlignment="center"
                 android:text="@string/full_name_txt"
+                android:textAlignment="center"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </RelativeLayout>
 
-        <!-- Area to edit profile -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -54,7 +55,7 @@
                 android:background="@drawable/ic_pic"
                 android:contentDescription="@string/full_name_txt"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -62,7 +63,7 @@
                 android:layout_marginStart="50dp"
                 android:text="@string/first_name_txt"
                 android:textSize="18sp"/>
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -120,7 +121,7 @@
                 android:background="@drawable/ic_birthday"
                 android:contentDescription="@string/bday_txt"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bday_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -149,7 +150,7 @@
                 android:background="@drawable/ic_email"
                 android:contentDescription="@string/email_txt"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -178,10 +179,10 @@
                 android:background="@drawable/ic_phone"
                 android:contentDescription="@string/phone_txt"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_txt"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_alignStart="@+id/phone"
                 android:layout_marginStart="50dp"
                 android:layout_below="@id/divider_email"
@@ -210,7 +211,7 @@
             <Spinner
                 android:id="@+id/gender_spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_alignStart="@+id/gender"
                 android:layout_marginStart="50dp"
                 android:layout_below="@id/divider_phone"
@@ -236,7 +237,7 @@
                 android:background="@drawable/ic_biography"
                 android:contentDescription="@string/bio_txt"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bio_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"

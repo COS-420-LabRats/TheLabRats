@@ -7,8 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import com.google.firebase.FirebaseApp
@@ -40,7 +39,63 @@ class ProfileFragment : Fragment() {
         val saveButton = view.findViewById<Button>(R.id.save_button)
         saveButton.setOnClickListener {
             saveProfile()
+            Toast.makeText(context, "Profile Information Saved.", Toast.LENGTH_LONG).show()
         }
+
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            db.collection("profile").document(currentUser.uid)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val profile = documentSnapshot.data
+                        val fullNameTextView = view.findViewById<TextView>(R.id.fullName)
+                        val firstName = profile?.get("firstName").toString()
+                        val lastName = profile?.get("lastName").toString()
+                        fullNameTextView.text = "$firstName $lastName"
+
+                        val firstNameTextView = view.findViewById<TextView>(R.id.first_name)
+                        firstNameTextView.text = profile?.get("firstName").toString()
+
+                        val lastNameTextView = view.findViewById<TextView>(R.id.last_name)
+                        lastNameTextView.text = profile?.get("lastName").toString()
+
+                        val accountTypeSpinner = view.findViewById<Spinner>(R.id.acc_txt)
+                        val accountAdapter = accountTypeSpinner.adapter as ArrayAdapter<String>
+                        val accountPosition = accountAdapter.getPosition(profile?.get("accountType").toString())
+                        accountTypeSpinner.setSelection(accountPosition)
+
+                        val birthdayTextView = view.findViewById<TextView>(R.id.bday_txt)
+                        birthdayTextView.text = profile?.get("birthday").toString()
+
+                        val emailTextView = view.findViewById<TextView>(R.id.email_txt)
+                        if (profile?.get("email") == null) {
+                            emailTextView.text = currentUser?.email.toString()
+                        } else {
+                            emailTextView.text = profile?.get("email").toString()
+                        }
+
+                        val phoneTextView = view.findViewById<TextView>(R.id.phone_txt)
+                        phoneTextView.text = profile?.get("phone").toString()
+
+                        val genderTypeSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
+                        val genderAdapter = genderTypeSpinner.adapter as ArrayAdapter<String>
+                        val genderPosition = genderAdapter.getPosition(profile?.get("gender").toString())
+                        genderTypeSpinner.setSelection(genderPosition)
+
+                        val bioTextView = view.findViewById<TextView>(R.id.bio_txt)
+                        bioTextView.text = profile?.get("biography").toString()
+
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error fetching document", e)
+                }
+        } else {
+            Log.w(TAG, "Error: current user is null")
+        }
+
     }
 
     private fun saveProfile() {
@@ -63,7 +118,7 @@ class ProfileFragment : Fragment() {
         val genderSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
         val gender = genderSpinner.selectedItem.toString()
         val bioField = view.findViewById<AppCompatEditText>(R.id.bio_txt)
-        val bio = bioField.text.toString()
+        val biography = bioField.text.toString()
 
         if (firstName.isEmpty()) {
             // Show an error message for the first name field
@@ -84,13 +139,13 @@ class ProfileFragment : Fragment() {
             return
         }
 
-        if (email != null) {
-            if (email.isEmpty()) {
+
+            if (email == null) {
                 // Show an error message for the email field
                 emailField.error = "Email is required"
                 return
             }
-        }
+
 
         if (phone.isEmpty()) {
             // Show an error message for the phone field
@@ -104,25 +159,31 @@ class ProfileFragment : Fragment() {
             return
         }
 
-            val profile = hashMapOf(
-                "firstName" to firstName,
-                "lastName" to lastName,
-                "accountType" to accountType,
-                "birthday" to birthday,
-                "email" to email,
-                "phone" to phone,
-                "gender" to gender,
-                "bio" to bio
-            )
+        val profile = hashMapOf(
+            "firstName" to firstName,
+            "lastName" to lastName,
+            "accountType" to accountType,
+            "birthday" to birthday,
+            "email" to email,
+            "phone" to phone,
+            "gender" to gender,
+            "biography" to biography
+        )
 
-            db.collection("profile")
-                .add(profile)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+        val id = currentUser?.uid
+        if (id != null) {
+            db.collection("profile").document(id)
+                .set(profile)
+                .addOnSuccessListener {
+                    Log.d(TAG, "DocumentSnapshot written with ID: $id")
                 }
                 .addOnFailureListener { e ->
                     Log.w(TAG, "Error adding document", e)
                 }
+        } else {
+            Log.w(TAG, "Error: current user is null")
         }
-
     }
+
+
+}
