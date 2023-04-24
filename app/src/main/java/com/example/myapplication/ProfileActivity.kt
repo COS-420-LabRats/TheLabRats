@@ -4,47 +4,32 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-
-class ProfileFragment : Fragment() {
+class ProfileActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseApp.initializeApp(requireContext())
+        setContentView(R.layout.activity_profile)
+        FirebaseApp.initializeApp(this)
         db = FirebaseFirestore.getInstance()
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val accSpinner = view.findViewById<Spinner>(R.id.acc_txt)
-        val genderSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
+        val accSpinner = findViewById<Spinner>(R.id.acc_txt)
+        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
 
         val accOptions = arrayOf("Account Type", "Student", "Regular")
         val genderOptions = arrayOf("Gender", "Female", "Male", "Prefer not to respond")
 
         val accAdapter = object : ArrayAdapter<String>(
-            requireContext(),
+            this,
             R.layout.spinner_item_disabled,
             accOptions
         ) {
@@ -54,7 +39,7 @@ class ProfileFragment : Fragment() {
         }
 
         val genderAdapter = object : ArrayAdapter<String>(
-            requireContext(),
+            this,
             R.layout.spinner_item_disabled,
             genderOptions
         ) {
@@ -72,10 +57,13 @@ class ProfileFragment : Fragment() {
         genderSpinner.setSelection(0, false)
 
 
-        val saveButton = view.findViewById<Button>(R.id.save_button)
+        val saveButton = findViewById<Button>(R.id.save_button)
         saveButton.setOnClickListener {
             saveProfile()
-            Toast.makeText(context, "Profile Information Saved.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Profile Information Saved.", Toast.LENGTH_LONG).show()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, HomeFragment())
+                .commit()
         }
 
         val auth = FirebaseAuth.getInstance()
@@ -86,41 +74,42 @@ class ProfileFragment : Fragment() {
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
                         val profile = documentSnapshot.data
-                        val fullNameTextView = view.findViewById<TextView>(R.id.fullName)
+                        val fullNameTextView = findViewById<TextView>(R.id.fullName)
                         val firstName = profile?.get("firstName").toString()
                         val lastName = profile?.get("lastName").toString()
                         fullNameTextView.text = "$firstName $lastName"
 
-                        val firstNameTextView = view.findViewById<TextView>(R.id.first_name)
+                        val firstNameTextView = findViewById<TextView>(R.id.first_name)
                         firstNameTextView.text = profile?.get("firstName").toString()
 
-                        val lastNameTextView = view.findViewById<TextView>(R.id.last_name)
+                        val lastNameTextView = findViewById<TextView>(R.id.last_name)
                         lastNameTextView.text = profile?.get("lastName").toString()
 
-                        val accountTypeSpinner = view.findViewById<Spinner>(R.id.acc_txt)
+                        val accountTypeSpinner = findViewById<Spinner>(R.id.acc_txt)
                         val accountAdapter = accountTypeSpinner.adapter as ArrayAdapter<String>
                         val accountPosition = accountAdapter.getPosition(profile?.get("accountType").toString())
                         accountTypeSpinner.setSelection(accountPosition)
 
-                        val birthdayTextView = view.findViewById<TextView>(R.id.bday_txt)
+                        val birthdayTextView = findViewById<TextView>(R.id.bday_txt)
                         birthdayTextView.text = profile?.get("birthday").toString()
 
-                        val emailTextView = view.findViewById<TextView>(R.id.email_txt)
+                        val emailTextView = findViewById<TextView>(R.id.email_txt)
                         if (profile?.get("email") == null) {
                             emailTextView.text = currentUser.email.toString()
                         } else {
                             emailTextView.text = profile["email"].toString()
                         }
 
-                        val phoneTextView = view.findViewById<TextView>(R.id.phone_txt)
+                        val phoneTextView = findViewById<TextView>(R.id.phone_txt)
                         phoneTextView.text = profile?.get("phone").toString()
 
-                        val genderTypeSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
-                        val genderAdapter = genderTypeSpinner.adapter as ArrayAdapter<String>
-                        val genderPosition = genderAdapter.getPosition(profile?.get("gender").toString())
-                        genderTypeSpinner.setSelection(genderPosition)
 
-                        val bioTextView = view.findViewById<TextView>(R.id.bio_txt)
+                        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
+                        val genderAdapter = genderSpinner.adapter as ArrayAdapter<String>
+                        val genderPosition = genderAdapter.getPosition(profile?.get("gennder").toString())
+                        genderSpinner.setSelection(genderPosition)
+
+                        val bioTextView = findViewById<TextView>(R.id.bio_txt)
                         bioTextView.text = profile?.get("biography").toString()
                         bioTextView.movementMethod = ScrollingMovementMethod()
 
@@ -139,22 +128,21 @@ class ProfileFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
 
-        val view = requireView()
-        val firstNameField = view.findViewById<AppCompatEditText>(R.id.first_name)
+        val firstNameField = findViewById<AppCompatEditText>(R.id.first_name)
         val firstName = firstNameField.text.toString()
-        val lastNameField = view.findViewById<AppCompatEditText>(R.id.last_name)
+        val lastNameField = findViewById<AppCompatEditText>(R.id.last_name)
         val lastName = lastNameField.text.toString()
-        val accountTypeSpinner = view.findViewById<Spinner>(R.id.acc_txt)
+        val accountTypeSpinner = findViewById<Spinner>(R.id.acc_txt)
         val accountType = accountTypeSpinner.selectedItem.toString()
-        val birthdayField = view.findViewById<AppCompatEditText>(R.id.bday_txt)
+        val birthdayField = findViewById<AppCompatEditText>(R.id.bday_txt)
         val birthday = birthdayField.text.toString()
         val email = currentUser?.email
-        val emailField = view.findViewById<AppCompatEditText>(R.id.email_txt).apply { setText(email) }
-        val phoneField = view.findViewById<AppCompatEditText>(R.id.phone_txt)
+        val emailField = findViewById<AppCompatEditText>(R.id.email_txt).apply { setText(email) }
+        val phoneField = findViewById<AppCompatEditText>(R.id.phone_txt)
         val phone = phoneField.text.toString()
-        val genderSpinner = view.findViewById<Spinner>(R.id.gender_spinner)
+        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
         val gender = genderSpinner.selectedItem.toString()
-        val bioField = view.findViewById<AppCompatEditText>(R.id.bio_txt)
+        val bioField = findViewById<AppCompatEditText>(R.id.bio_txt)
         val biography = bioField.text.toString()
 
         if (firstName.isEmpty()) {
@@ -176,13 +164,11 @@ class ProfileFragment : Fragment() {
             return
         }
 
-
-            if (email == null) {
-                // Show an error message for the email field
-                emailField.error = "Email is required"
-                return
-            }
-
+        if (email == null) {
+            // Show an error message for the email field
+            emailField.error = "Email is required"
+            return
+        }
 
         if (phone.isEmpty()) {
             // Show an error message for the phone field
@@ -221,6 +207,7 @@ class ProfileFragment : Fragment() {
             Log.w(TAG, "Error: current user is null")
         }
     }
+
 
 
 }

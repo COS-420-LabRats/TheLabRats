@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.example.myapplication.R
+
 
 class SignUpActivity: AppCompatActivity() {
 
@@ -22,7 +24,6 @@ class SignUpActivity: AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-
         binding.textView.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
@@ -33,14 +34,15 @@ class SignUpActivity: AppCompatActivity() {
             val pass = binding.passET.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
 
-
             if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()){
                 if (pass == confirmPass) {
 
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener{
                         if (it.isSuccessful){
-                            val intent = Intent(this, SignInActivity::class.java)
+                            val intent = Intent(this, ProfileActivity::class.java)
                             startActivity(intent)
+                            finish() // finish the SignUpActivity so the user cannot navigate back to it
+
                         }else{
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
@@ -59,3 +61,4 @@ class SignUpActivity: AppCompatActivity() {
     }
 
 }
+

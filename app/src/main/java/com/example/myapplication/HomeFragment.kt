@@ -14,11 +14,7 @@ import com.example.myapplication.databinding.FragmentHomeBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
+
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
@@ -62,7 +58,8 @@ class HomeFragment : Fragment() {
         return when (item.itemId) {
             // ...
             R.id.ProfileCard -> {
-                parentFragmentManager.beginTransaction().replace(R.id.container, ProfileFragment()).commit()
+                val intent = Intent(activity, ProfileActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.ProfileInfo -> {
@@ -82,9 +79,8 @@ class HomeFragment : Fragment() {
                                         Log.d("HomeFragment", "currentUser: ${currentUser?.uid}")
                                         Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
                                         Log.d("HomeFragment", "accountType: $accountType")
-                                        parentFragmentManager.beginTransaction()
-                                            .replace(R.id.container, StudentFragment())
-                                            .commit()
+                                        val intent = Intent(activity, StudentActivity::class.java)
+                                        startActivity(intent)
                                         true
                                     }
                                     "Regular" -> {
