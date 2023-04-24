@@ -209,7 +209,7 @@ class ProfileFragment : Fragment() {
 
         val id = currentUser.uid
         if (id != null) {
-            db.collection("profile").document(id)
+            db.collection("Profile").document(id)
                 .set(profile)
                 .addOnSuccessListener {
                     Log.d(TAG, "DocumentSnapshot written with ID: $id")

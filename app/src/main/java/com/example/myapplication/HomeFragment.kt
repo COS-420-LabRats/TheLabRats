@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         return when (item.itemId) {
             // ...
             R.id.ProfileCard -> {
-                parentFragmentManager.beginTransaction().replace(R.id.ProfileContainer, ProfileFragment()).commit()
+                parentFragmentManager.beginTransaction().replace(R.id.container, ProfileFragment()).commit()
                 true
             }
             R.id.ProfileInfo -> {
@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
                                         Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
                                         Log.d("HomeFragment", "accountType: $accountType")
                                         parentFragmentManager.beginTransaction()
-                                            .replace(R.id.StudentContainer, StudentFragment())
+                                            .replace(R.id.container, StudentFragment())
                                             .commit()
                                         true
                                     }
@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
                                         Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
                                         Log.d("HomeFragment", "accountType: $accountType")
                                         parentFragmentManager.beginTransaction()
-                                            .replace(R.id.RegularContainer, RegularFragment())
+                                            .replace(R.id.container, RegularFragment())
                                             .commit()
                                         true
                                     }
