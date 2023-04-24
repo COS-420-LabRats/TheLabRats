@@ -80,7 +80,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/SigninMessage2"
             app:layout_constraintBottom_toTopOf="@id/emailLayout"
-            android:background="@drawable/round_button_signin">
+            android:background="@drawable/lavender_round_button">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEt"
@@ -106,7 +106,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emailLayout"
             app:passwordToggleEnabled="true"
-            android:background="@drawable/round_button_signin">
+            android:background="@drawable/lavender_round_button">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passET"
@@ -131,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout"
-            android:background="@drawable/round_button_signin" />
+            android:background="@drawable/lavender_round_button" />
 
         <TextView
             android:id="@+id/textView"

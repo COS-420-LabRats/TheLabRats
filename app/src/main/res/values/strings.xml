@@ -63,5 +63,33 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <string name="Info">This is the swiping screen. To match with someone
+        swipe up. If you want to decline someone, swipe down.</string>
+
+    <string-array name="yesNo">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="grades">
+        <item>Freshman</item>
+        <item>Sophomore</item>
+        <item>Junior</item>
+        <item>Senior</item>
+        <item>Graduate</item>
+    </string-array>
+
+    <string-array name="religions">
+        <item>Prefer not to say</item>
+        <item>Christianity</item>
+        <item>Islam</item>
+        <item>Hinduism</item>
+        <item>Buddhism</item>
+        <item>Sikhism</item>
+        <item>Judaism</item>
+        <item>Atheist</item>
+        <item>Agnostic</item>
+    </string-array>
+
 
 </resources>

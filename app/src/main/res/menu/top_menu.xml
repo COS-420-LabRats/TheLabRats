@@ -12,7 +12,19 @@
         android:id="@+id/UpdateProfile"
         android:title="Update Profile"
         android:icon="@drawable/edit"
-        app:showAsAction="never" />
+        app:showAsAction="never">
+
+        <menu>
+            <item
+                android:id="@+id/ProfileCard"
+                android:title="Update Profile Card"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/ProfileInfo"
+                android:title="Update Profile Settings"
+                app:showAsAction="never"/>
+            </menu>
+    </item>
 
     <item
         android:id="@+id/UpdatePreferences"

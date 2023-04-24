@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.Toast
@@ -9,13 +11,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
     private lateinit var logout: Button
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var viewBinding: FragmentHomeBinding
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +36,8 @@ class HomeFragment : Fragment() {
         logout = viewBinding.logoutButton
         logout.setOnClickListener { logOut() }
         firebaseAuth = FirebaseAuth.getInstance()
+        FirebaseApp.initializeApp(requireContext())
+        db = FirebaseFirestore.getInstance()
 
         val toolbar: Toolbar = viewBinding.HomeToolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
@@ -33,6 +45,9 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
 
         return viewBinding.root
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_menu, menu)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,21 +58,64 @@ class HomeFragment : Fragment() {
         profileCard.commit()
     }
 
-
-    @Deprecated("Deprecated in Java", ReplaceWith("inflater.inflate(R.menu.top_menu, menu)"))
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.top_menu, menu)
-    }
-
-    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.Settings -> {
-                Toast.makeText(context, "Settings feature coming soon.", Toast.LENGTH_LONG).show()
+            // ...
+            R.id.ProfileCard -> {
+                parentFragmentManager.beginTransaction().replace(R.id.ProfileContainer, ProfileFragment()).commit()
                 true
             }
-            R.id.UpdateProfile -> {
-                parentFragmentManager.beginTransaction().replace(R.id.container, ProfileFragment()).commit()
+            R.id.ProfileInfo -> {
+                val auth = FirebaseAuth.getInstance()
+                val currentUser = auth.currentUser
+                var accountType: String? = null
+                if (currentUser != null) {
+                    db.collection("Profile").document(currentUser.uid)
+                        .get()
+                        .addOnSuccessListener { documentSnapshot ->
+                            if (documentSnapshot.exists()) {
+                                val profile = documentSnapshot.data
+                                accountType = profile?.get("accountType")
+                                    .toString()
+                                when (accountType) {
+                                    "Student" -> {
+                                        Log.d("HomeFragment", "currentUser: ${currentUser?.uid}")
+                                        Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
+                                        Log.d("HomeFragment", "accountType: $accountType")
+                                        parentFragmentManager.beginTransaction()
+                                            .replace(R.id.StudentContainer, StudentFragment())
+                                            .commit()
+                                        true
+                                    }
+                                    "Regular" -> {
+                                        Log.d("HomeFragment", "currentUser: ${currentUser?.uid}")
+                                        Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
+                                        Log.d("HomeFragment", "accountType: $accountType")
+                                        parentFragmentManager.beginTransaction()
+                                            .replace(R.id.RegularContainer, RegularFragment())
+                                            .commit()
+                                        true
+                                    }
+                                    else -> {
+                                        Toast.makeText(
+                                            context,
+                                            "User Does not have account type (Error 97 - HomeFragment).",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        Log.d("HomeFragment", "currentUser: ${currentUser?.uid}")
+                                        Log.d("HomeFragment", "documentSnapshot: $documentSnapshot")
+                                        Log.d("HomeFragment", "accountType: $accountType")
+                                        true
+                                    }
+                                }
+
+                            }
+                        }.addOnFailureListener { e ->
+                            Log.w(ContentValues.TAG, "Error fetching document", e)
+                        }
+                } else {
+                    Log.w(ContentValues.TAG, "Error: current user is null")
+                }
                 true
             }
             R.id.UpdatePreferences -> {
@@ -75,6 +133,7 @@ class HomeFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     private fun logOut() {
         if (isAdded) {
