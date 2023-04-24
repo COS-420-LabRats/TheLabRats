@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/card_view" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/HomeToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:elevation="8dp"
-        android:padding="16dp">
+        android:background="@color/BlueGrey"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:logo="@drawable/baseline_home_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="RoomUp"
+        app:titleMarginStart="30dp"
+        app:menu="@menu/swipe_menu"/>
 
-        <!-- Add UI elements for card view here -->
+    <include
+        android:id="@+id/ProfileCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HomeToolbar"
+        layout="@layout/card_layout"/>
 
-    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

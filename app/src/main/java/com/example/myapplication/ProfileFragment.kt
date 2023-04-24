@@ -81,7 +81,7 @@ class ProfileFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            db.collection("profile").document(currentUser.uid)
+            db.collection("Profile").document(currentUser.uid)
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {

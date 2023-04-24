@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ProfileContainer"
+    android:id="@+id/StudentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BlueGrey">
@@ -13,13 +13,13 @@
 
         <!-- Shows Profile Pic and Name at the top -->
 
-        <!-- Area to edit profile -->
+        <!-- Area to edit preferences (student) -->
         <RelativeLayout
             android:layout_width="300dp"
             android:layout_height="275dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/top_profile_background">
+            android:background="@drawable/top_pref_background">
             <!-- Shows Profile Pic at the top -->
             <ImageButton
                 android:id="@+id/ProfilePicButton"
@@ -48,216 +48,242 @@
             android:padding="15dp"
             android:background="@color/white">
 
-            <!-- Edit Name -->
+            <!-- Edit Dorm -->
             <ImageView
-                android:id="@+id/pic"
+                android:id="@+id/ic_dorm"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@drawable/ic_pic"
-                android:contentDescription="@string/full_name_txt"/>
+                android:background="@drawable/baseline_bed_24"
+                android:contentDescription="Has Dorm"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/first_name"
+            <TextView
+                android:id="@+id/dormTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:layout_alignStart="@+id/pic"
+                android:layout_alignStart="@+id/ic_dorm"
                 android:layout_marginStart="50dp"
-                android:text="@string/first_name_txt"
+                android:text="Do you already have a dorm?"
                 android:textSize="18sp"/>
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_alignStart="@+id/pic"
-                android:layout_marginStart="50dp"
-                android:layout_below="@+id/first_name"
-                android:layout_marginTop="15dp"
-                android:text="@string/last_name_txt"
-                android:textSize="18sp"/>
-            <View
-                android:id="@+id/divider_name"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/last_name"
-                android:background="@color/charcoal"/>
-
-            <!-- Edit Account Type -->
-            <ImageView
-                android:id="@+id/acc_type"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@id/divider_name"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_acc"
-                android:contentDescription="@string/acc_txt"/>
-
             <Spinner
-                android:id="@+id/acc_txt"
+                android:id="@+id/hasDorm"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_height= "50dp"
-                android:layout_alignStart="@+id/acc_type"
+                android:layout_alignStart="@+id/ic_dorm"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_name"
-                android:layout_marginTop="20dp"
-                android:entries="@array/accountTypes"
+                android:layout_below="@id/dormTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
                 android:textSize="18sp"/>
-
             <View
-                android:id="@+id/divider_acc"
+                android:id="@+id/divider_dorm"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/acc_txt"
+                android:layout_below="@+id/hasDorm"
                 android:background="@color/charcoal"/>
 
-            <!-- Edit Birthday -->
+            <!-- Edit University -->
             <ImageView
-                android:id="@+id/birthday"
+                android:id="@+id/ic_school"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_below="@id/divider_acc"
+                android:layout_below="@id/divider_dorm"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ic_birthday"
-                android:contentDescription="@string/bday_txt"/>
+                android:background="@drawable/baseline_school_24"
+                android:contentDescription="School Icon"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bday_txt"
+            <TextView
+                android:id="@+id/uniTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:layout_alignStart="@+id/birthday"
+                android:layout_alignStart="@+id/ic_school"
+                android:layout_below="@id/divider_dorm"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_acc"
-                android:layout_marginTop="20dp"
-                android:inputType="date"
-                android:text="@string/bday_txt"
+                android:layout_marginTop="10dp"
+                android:text="University:"
                 android:textSize="18sp"/>
-            <View
-                android:id="@+id/divider_bday"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/bday_txt"
-                android:background="@color/charcoal"/>
-
-            <!-- Edit Email -->
-            <ImageView
-                android:id="@+id/email"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@id/divider_bday"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_email"
-                android:contentDescription="@string/email_txt"/>
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_txt"
+                android:id="@+id/university"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_alignStart="@+id/email"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_school"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_bday"
+                android:layout_below="@id/uniTxt"
                 android:layout_marginTop="20dp"
-                android:inputType="textEmailAddress"
-                android:text="@string/email_txt"
+                android:text="University"
                 android:textSize="18sp"/>
+
             <View
-                android:id="@+id/divider_email"
+                android:id="@+id/divider_uni"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/email_txt"
+                android:layout_below="@+id/university"
                 android:background="@color/charcoal"/>
 
-            <!-- Edit Phone -->
+            <!-- Edit Grade -->
             <ImageView
-                android:id="@+id/phone"
+                android:id="@+id/ic_grade"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_below="@id/divider_email"
+                android:layout_below="@id/divider_uni"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ic_phone"
-                android:contentDescription="@string/phone_txt"/>
+                android:background="@drawable/baseline_grade_24"
+                android:contentDescription="Grade Icon"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone_txt"
+            <TextView
+                android:id="@+id/gradeTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:layout_alignStart="@+id/phone"
+                android:layout_alignStart="@+id/ic_grade"
+                android:layout_below="@id/divider_uni"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_email"
-                android:layout_marginTop="20dp"
-                android:inputType="phone"
-                android:text="@string/phone_txt"
+                android:layout_marginTop="10dp"
+                android:text="School Grade:"
                 android:textSize="18sp"/>
-            <View
-                android:id="@+id/divider_phone"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/phone_txt"
-                android:background="@color/charcoal"/>
-
-            <!-- Edit Gender -->
-            <ImageView
-                android:id="@+id/gender"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@id/divider_phone"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_gender"
-                android:contentDescription="@string/gender_txt"/>
 
             <Spinner
-                android:id="@+id/gender_spinner"
+                android:id="@+id/grade"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_alignStart="@+id/gender"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_grade"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_phone"
-                android:layout_marginTop="20dp"
-                android:text="@string/gender_txt"
-                android:textSize="18sp"
-                android:entries="@array/genderTypes"/>
+                android:layout_below="@id/gradeTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/grades"
+                android:textSize="18sp"/>
             <View
-                android:id="@+id/divider_gender"
+                android:id="@+id/divider_grade"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/gender_spinner"
+                android:layout_below="@+id/grade"
                 android:background="@color/charcoal"/>
 
-            <!-- Edit Biography -->
+            <!-- Edit Major -->
             <ImageView
-                android:id="@+id/bio"
+                android:id="@+id/ic_major"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_below="@id/divider_gender"
+                android:layout_below="@id/divider_grade"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ic_biography"
-                android:contentDescription="@string/bio_txt"/>
+                android:background="@drawable/baseline_book_24"
+                android:contentDescription="Major Icon"/>
+
+            <TextView
+                android:id="@+id/majorTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_major"
+                android:layout_below="@id/divider_grade"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Major:"
+                android:textSize="18sp"/>
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bio_txt"
+                android:id="@+id/major"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@id/ic_major"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/majorTxt"
+                android:layout_marginTop="20dp"
+                android:text="Major"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_major"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/major"
+                android:background="@color/charcoal"/>
+
+            <!-- Edit Religion -->
+            <ImageView
+                android:id="@+id/ic_religion"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/divider_major"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_church_24"
+                android:contentDescription="Religion Icon"/>
+
+            <TextView
+                android:id="@+id/religionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_religion"
+                android:layout_below="@id/divider_major"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Religion:"
+                android:textSize="18sp"/>
+
+            <Spinner
+                android:id="@+id/religion"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_religion"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/religionTxt"
+                android:layout_marginTop="20dp"
+                android:text="Religion Option"
+                android:textSize="18sp"
+                android:entries="@array/religions"/>
+            <View
+                android:id="@+id/divider_religion"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/religion"
+                android:background="@color/charcoal"/>
+
+            <!-- Edit Hobbies -->
+            <ImageView
+                android:id="@+id/ic_hobbies"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/divider_religion"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_biography"
+                android:contentDescription="Hobby Icon"/>
+
+            <TextView
+                android:id="@+id/hobbyTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_hobbies"
+                android:layout_below="@id/divider_religion"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Hobbies:"
+                android:textSize="18sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hobbies"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_alignStart="@+id/bio"
+                android:layout_alignStart="@+id/ic_hobbies"
                 android:layout_marginStart="50dp"
-                android:layout_below="@id/divider_gender"
+                android:layout_below="@id/hobbyTxt"
                 android:layout_marginTop="20dp"
-                android:text="@string/bio_txt"
+                android:text="Hobbies"
                 android:textSize="18sp"
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="10"
                 android:scrollbars="vertical"/>
             <View
-                android:id="@+id/divider_bio"
+                android:id="@+id/divider_hobbies"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/bio_txt"
+                android:layout_below="@+id/hobbies"
                 android:background="@color/charcoal"/>
 
             <Button
@@ -265,7 +291,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/divider_bio"
+                android:layout_below="@id/divider_hobbies"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 android:text="@string/save_button"

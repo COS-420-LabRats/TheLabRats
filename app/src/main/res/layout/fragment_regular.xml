@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RegularContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlueGrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Shows Profile Pic and Name at the top -->
+
+        <!-- Area to edit preferences (regular) -->
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="275dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/top_pref_background">
+            <!-- Shows Profile Pic at the top -->
+            <ImageButton
+                android:id="@+id/ProfilePicButton"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/empty_pic"
+                android:contentDescription="@string/profile_pic" />
+            <!-- Shows Name at the top -->
+            <TextView
+                android:id="@+id/fullName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ProfilePicButton"
+                android:padding="15dp"
+                android:text="@string/full_name_txt"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:background="@color/white">
+
+            <!-- Edit Address (Later we can have user edit address) -->
+            <ImageView
+                android:id="@+id/addressPic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/baseline_bed_24"
+                android:contentDescription="Has Address"/>
+
+            <TextView
+                android:id="@+id/addressTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/addressPic"
+                android:layout_marginStart="50dp"
+                android:text="Do you already have a place to live?"
+                android:textSize="18sp"/>
+            <Spinner
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/addressPic"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/addressTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_address"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/address"
+                android:background="@color/charcoal"/>
+
+            <!-- Edit Job -->
+            <ImageView
+                android:id="@+id/ic_job"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/divider_address"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_work_24"
+                android:contentDescription="School Icon"/>
+
+            <TextView
+                android:id="@+id/jobTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_job"
+                android:layout_below="@id/divider_address"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Job Title"
+                android:textSize="18sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/job"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_job"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/jobTxt"
+                android:layout_marginTop="20dp"
+                android:text="Job Title"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_job"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/job"
+                android:background="@color/charcoal"/>
+
+            <!-- Edit MaxRent -->
+            <ImageView
+                android:id="@+id/ic_rent"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/divider_job"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_attach_money_24"
+                android:contentDescription="Rent Icon"/>
+
+            <TextView
+                android:id="@+id/rentTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_alignStart="@+id/ic_rent"
+                android:layout_below="@id/divider_job"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Max rent willing to pay\nOR \nWhat you currently pay:"
+                android:textSize="18sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/rent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_rent"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/rentTxt"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:text="Rent"
+                android:entries="@array/grades"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_rent"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/rent"
+                android:background="@color/charcoal"/>
+
+            <!-- Edit Has Criminal History -->
+            <ImageView
+                android:id="@+id/ic_criminalHistory"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/divider_rent"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_local_police_24"
+                android:contentDescription="Crime Icon"/>
+
+            <TextView
+                android:id="@+id/criminalHistoryTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_criminalHistory"
+                android:layout_below="@id/divider_rent"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Do you have criminal history?"
+                android:textSize="18sp"/>
+
+            <Spinner
+                android:id="@+id/hasCriminalHistory"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_criminalHistory"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/criminalHistoryTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
+                android:textSize="18sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/criminalHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_alignStart="@+id/ic_criminalHistory"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/hasCriminalHistory"
+                android:layout_marginTop="20dp"
+                android:text="Criminal History"
+                android:textSize="18sp"
+                android:inputType="textMultiLine"
+                android:minLines="1"
+                android:maxLines="10"
+                android:scrollbars="vertical"/>
+            <View
+                android:id="@+id/divider_criminalHistory"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/criminalHistory"
+                android:background="@color/charcoal"/>
+
+            <!-- Has Pets (Y/N)-->
+            <ImageView
+                android:id="@+id/ic_pets"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/baseline_pets_24"
+                android:layout_below="@+id/divider_criminalHistory"
+                android:contentDescription="Has Pets"/>
+
+            <TextView
+                android:id="@+id/petsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_pets"
+                android:layout_marginStart="50dp"
+                android:layout_below="@+id/divider_criminalHistory"
+                android:text="Do you have pets?"
+                android:textSize="18sp"/>
+            <Spinner
+                android:id="@+id/pets"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_pets"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/petsTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_pets"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/pets"
+                android:background="@color/charcoal"/>
+
+            <!-- Has Kids (Y/N)-->
+            <ImageView
+                android:id="@+id/ic_kids"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/baseline_crib_24"
+                android:layout_below="@+id/divider_pets"
+                android:contentDescription="Crib Icon"/>
+
+            <TextView
+                android:id="@+id/kidsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_kids"
+                android:layout_marginStart="50dp"
+                android:layout_below="@+id/divider_pets"
+                android:text="Do you have Children?"
+                android:textSize="18sp"/>
+            <Spinner
+                android:id="@+id/kids"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_kids"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/kidsTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_kids"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/kids"
+                android:background="@color/charcoal"/>
+
+            <!-- Is Smoker (Y/N)-->
+            <ImageView
+                android:id="@+id/ic_smoker"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/baseline_smoking_rooms_24"
+                android:layout_below="@+id/divider_kids"
+                android:contentDescription="Smoker Icon"/>
+
+            <TextView
+                android:id="@+id/smokerTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignStart="@+id/ic_smoker"
+                android:layout_marginStart="50dp"
+                android:layout_below="@+id/divider_kids"
+                android:text="Are you a smoker (Tabacco or Marijuana)?"
+                android:textSize="18sp"/>
+            <Spinner
+                android:id="@+id/smoker"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height= "50dp"
+                android:layout_alignStart="@+id/ic_smoker"
+                android:layout_marginStart="50dp"
+                android:layout_below="@id/smokerTxt"
+                android:layout_marginTop="10dp"
+                android:entries="@array/yesNo"
+                android:textSize="18sp"/>
+            <View
+                android:id="@+id/divider_smoker"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/smoker"
+                android:background="@color/charcoal"/>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_smoker"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:text="@string/save_button"
+                app:backgroundTint="@null"
+                android:background="@drawable/lavender_round_button"
+                android:padding="6dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
