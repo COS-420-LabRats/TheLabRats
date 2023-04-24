@@ -108,25 +108,6 @@ class StudentFragment : Fragment() {
     }
 
     private fun saveProfile() {
-        val auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        var accountType: String? = null // define accountType outside of the lambda function
-        if (currentUser != null) {
-            db.collection("Profile").document(currentUser.uid)
-                .get()
-                .addOnSuccessListener { documentSnapshot ->
-                    if (documentSnapshot.exists()) {
-                        val profile = documentSnapshot.data
-                        accountType = profile?.get("accountType").toString() // set the value of accountType inside the lambda function
-                    }
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error fetching document", e)
-                }
-        } else {
-            Log.w(TAG, "Error: current user is null")
-        }
-
         val view = requireView()
 
         val dormTypeSpinner = view.findViewById<Spinner>(R.id.hasDorm)
@@ -142,32 +123,44 @@ class StudentFragment : Fragment() {
         val hobbiesField = view.findViewById<AppCompatEditText>(R.id.hobbies)
         val hobbies = hobbiesField.text.toString()
 
-        // use the accountType variable outside of the lambda function
-        if (accountType != null) {
-            val accountInfo = hashMapOf(
-                "accountType" to accountType,
-                "dorm" to dorm,
-                "university" to university,
-                "grade" to grade,
-                "major" to major,
-                "religion" to religion,
-                "hobbies" to hobbies,
-            )
 
-            if (currentUser != null) {
-                db.collection("AccountInfo").document(currentUser.uid)
-                    .set(accountInfo)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "Account Info saved")
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        var accountType: String? = null // define accountType outside of the lambda function
+        if (currentUser != null) {
+            db.collection("Profile").document(currentUser.uid)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val profile = documentSnapshot.data
+                        accountType = profile?.get("accountType").toString()
+
+                        // use the accountType variable inside the lambda function
+                        val accountInfo = hashMapOf(
+                            "accountType" to accountType,
+                            "dorm" to dorm,
+                            "university" to university,
+                            "grade" to grade,
+                            "major" to major,
+                            "religion" to religion,
+                            "hobbies" to hobbies,
+                        )
+
+                        db.collection("AccountInfo").document(currentUser.uid)
+                            .set(accountInfo)
+                            .addOnSuccessListener {
+                                Log.d(TAG, "Account information saved")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error saving account information", e)
+                            }
                     }
-                    .addOnFailureListener { e ->
-                        Log.w(TAG, "Error adding document", e)
-                    }
-            }
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error fetching document", e)
+                }
         } else {
-            Log.w(TAG, "Error: accountType is null")
+            Log.w(TAG, "Error: current user is null")
         }
     }
-
-
 }

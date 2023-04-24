@@ -123,25 +123,6 @@ class RegularFragment : Fragment() {
     }
 
     private fun saveProfile() {
-        val auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        var accountType: String? = null // define accountType outside of the lambda function
-        if (currentUser != null) {
-            db.collection("Profile").document(currentUser.uid)
-                .get()
-                .addOnSuccessListener { documentSnapshot ->
-                    if (documentSnapshot.exists()) {
-                        val profile = documentSnapshot.data
-                        accountType = profile?.get("accountType").toString() // set the value of accountType inside the lambda function
-                    }
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error fetching document", e)
-                }
-        } else {
-            Log.w(TAG, "Error: current user is null")
-        }
-
         val view = requireView()
 
         val addressTypeSpinner = view.findViewById<Spinner>(R.id.address)
@@ -161,32 +142,50 @@ class RegularFragment : Fragment() {
         val smokerTypeSpinner = view.findViewById<Spinner>(R.id.smoker)
         val smoker = smokerTypeSpinner.selectedItem.toString()
 
-        // use the accountType variable outside of the lambda function
-        if (accountType != null) {
-            val accountInfo = hashMapOf(
-                "accountType" to accountType,
-                "hasAddress" to address,
-                "job" to job,
-                "rent" to rent,
-                "hasCriminalHistory" to hasCriminalHistory,
-                "criminalHistory" to criminalHistory,
-                "pets" to pets,
-                "kids" to kids,
-                "smoker" to smoker
-            )
 
-            if (currentUser != null) {
-                db.collection("AccountInfo").document(currentUser.uid)
-                    .set(accountInfo)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "Account Info saved")
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        var accountType: String? = null // define accountType outside of the lambda function
+        if (currentUser != null) {
+            db.collection("Profile").document(currentUser.uid)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val profile = documentSnapshot.data
+                        accountType = profile?.get("accountType").toString() // set the value of accountType inside the lambda function
+                        if (accountType != null) {
+                            val accountInfo = hashMapOf(
+                                "accountType" to accountType,
+                                "hasAddress" to address,
+                                "job" to job,
+                                "rent" to rent,
+                                "hasCriminalHistory" to hasCriminalHistory,
+                                "criminalHistory" to criminalHistory,
+                                "pets" to pets,
+                                "kids" to kids,
+                                "smoker" to smoker
+                            )
+
+                            if (currentUser != null) {
+                                db.collection("AccountInfo").document(currentUser.uid)
+                                    .set(accountInfo)
+                                    .addOnSuccessListener {
+                                        Log.d(TAG, "Account Info saved")
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w(TAG, "Error adding document", e)
+                                    }
+                            }
+                        } else {
+                            Log.w(TAG, "Error: accountType is null")
+                        }
                     }
-                    .addOnFailureListener { e ->
-                        Log.w(TAG, "Error adding document", e)
-                    }
-            }
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error fetching document", e)
+                }
         } else {
-            Log.w(TAG, "Error: accountType is null")
+            Log.w(TAG, "Error: current user is null")
         }
     }
 
