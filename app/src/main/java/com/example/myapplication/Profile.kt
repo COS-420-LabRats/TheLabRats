@@ -12,8 +12,14 @@ Picture2: String, Picture3: String, Picture4: String, Picture5:String,
     fun setProfile(){
         println("Profile set")
     }
-    fun verifyAge(DOB: String){
-        println("Age verified")
+    fun verifyAge(DOB: String): Boolean {
+        val year = DOB.toInt()
+        if ((2023 - year) >= 18){
+            return true
+        }
+        else{
+            return false
+        }
     }
     fun addPictures(Picture1: String, Picture2: String, Picture3: String, Picture4: String, Picture5: String){
         println("Pictures Added")

@@ -7,6 +7,12 @@ import org.junit.Test
 class BlockUserTest {
 
     @Test
-    fun doBlock() {
+    fun testDoBlock() {
+        val buTest =  BlockUser()
+
+        val User1 = User(4, "testPassA", "testEmailA")
+        val User2 = User(5, "testPassB", "testEmailB")
+
+        assertTrue(buTest.doBlock(User1, User2))
     }
 }
