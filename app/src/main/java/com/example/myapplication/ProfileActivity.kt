@@ -23,10 +23,10 @@ class ProfileActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         db = FirebaseFirestore.getInstance()
 
-        val accSpinner = findViewById<Spinner>(R.id.acc_txt)
-        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
+        val accSpinner = findViewById<Spinner>(R.id.accountType)
+        val genderSpinner = findViewById<Spinner>(R.id.gender)
 
-        val accOptions = arrayOf("Account Type", "Student", "Regular")
+        val accOptions = arrayOf("Account Type", "On Campus", "Off Campus")
         val genderOptions = arrayOf("Gender", "Female", "Male", "Prefer not to respond")
 
         val accAdapter = object : ArrayAdapter<String>(
@@ -87,31 +87,31 @@ class ProfileActivity : AppCompatActivity() {
                         val lastNameTextView = findViewById<TextView>(R.id.last_name)
                         lastNameTextView.text = profile?.get("lastName").toString()
 
-                        val accountTypeSpinner = findViewById<Spinner>(R.id.acc_txt)
+                        val accountTypeSpinner = findViewById<Spinner>(R.id.accountType)
                         val accountAdapter = accountTypeSpinner.adapter as ArrayAdapter<String>
                         val accountPosition = accountAdapter.getPosition(profile?.get("accountType").toString())
                         accountTypeSpinner.setSelection(accountPosition)
 
-                        val birthdayTextView = findViewById<TextView>(R.id.bday_txt)
+                        val birthdayTextView = findViewById<TextView>(R.id.birthday)
                         birthdayTextView.text = profile?.get("birthday").toString()
 
-                        val emailTextView = findViewById<TextView>(R.id.email_txt)
+                        val emailTextView = findViewById<TextView>(R.id.email)
                         if (profile?.get("email") == null) {
                             emailTextView.text = currentUser.email.toString()
                         } else {
                             emailTextView.text = profile["email"].toString()
                         }
 
-                        val phoneTextView = findViewById<TextView>(R.id.phone_txt)
+                        val phoneTextView = findViewById<TextView>(R.id.phone)
                         phoneTextView.text = profile?.get("phone").toString()
 
 
-                        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
+                        val genderSpinner = findViewById<Spinner>(R.id.gender)
                         val genderAdapter = genderSpinner.adapter as ArrayAdapter<String>
                         val genderPosition = genderAdapter.getPosition(profile?.get("gender").toString())
                         genderSpinner.setSelection(genderPosition)
 
-                        val bioTextView = findViewById<TextView>(R.id.bio_txt)
+                        val bioTextView = findViewById<TextView>(R.id.biography)
                         bioTextView.text = profile?.get("biography").toString()
                         bioTextView.movementMethod = ScrollingMovementMethod()
 
@@ -134,17 +134,17 @@ class ProfileActivity : AppCompatActivity() {
         val firstName = firstNameField.text.toString()
         val lastNameField = findViewById<AppCompatEditText>(R.id.last_name)
         val lastName = lastNameField.text.toString()
-        val accountTypeSpinner = findViewById<Spinner>(R.id.acc_txt)
+        val accountTypeSpinner = findViewById<Spinner>(R.id.accountType)
         val accountType = accountTypeSpinner.selectedItem.toString()
-        val birthdayField = findViewById<AppCompatEditText>(R.id.bday_txt)
+        val birthdayField = findViewById<AppCompatEditText>(R.id.birthday)
         val birthday = birthdayField.text.toString()
         val email = currentUser?.email
-        val emailField = findViewById<AppCompatEditText>(R.id.email_txt).apply { setText(email) }
-        val phoneField = findViewById<AppCompatEditText>(R.id.phone_txt)
+        val emailField = findViewById<AppCompatEditText>(R.id.email).apply { setText(email) }
+        val phoneField = findViewById<AppCompatEditText>(R.id.phone)
         val phone = phoneField.text.toString()
-        val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
+        val genderSpinner = findViewById<Spinner>(R.id.gender)
         val gender = genderSpinner.selectedItem.toString()
-        val bioField = findViewById<AppCompatEditText>(R.id.bio_txt)
+        val bioField = findViewById<AppCompatEditText>(R.id.biography)
         val biography = bioField.text.toString()
 
         if (firstName.isEmpty()) {

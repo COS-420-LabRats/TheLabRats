@@ -89,13 +89,13 @@ class HomeActivity : AppCompatActivity() {
                                 accountType = profile?.get("accountType")
                                     .toString()
                                 when (accountType) {
-                                    "Student" -> {
-                                        val studentSettings = Intent(this, StudentActivity::class.java)
+                                    "On Campus" -> {
+                                        val studentSettings = Intent(this, OnCampusUserProfileActivity::class.java)
                                         startActivity(studentSettings)
                                         true
                                     }
-                                    "Regular" -> {
-                                        val regularSettings = Intent(this, RegularActivity::class.java)
+                                    "Off Campus" -> {
+                                        val regularSettings = Intent(this, OffCampusUserProfileActivity::class.java)
                                         startActivity(regularSettings)
                                         true
                                     }

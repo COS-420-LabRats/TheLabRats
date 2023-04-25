@@ -12,13 +12,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class RegularActivity : AppCompatActivity() {
+class OffCampusUserProfileActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_regular)
+        setContentView(R.layout.activity_offcampuslayout)
         FirebaseApp.initializeApp(this)
         db = FirebaseFirestore.getInstance()
         loadData()

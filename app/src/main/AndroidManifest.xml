@@ -49,11 +49,11 @@
             android:exported="true" />
 
         <activity
-            android:name=".StudentActivity"
+            android:name=".OnCampusUserProfileActivity"
             android:exported="true" />
 
         <activity
-            android:name=".RegularActivity"
+            android:name=".OffCampusUserProfileActivity"
             android:exported="true" />
 
     </application>

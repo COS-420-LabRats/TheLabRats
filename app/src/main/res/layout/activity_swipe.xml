@@ -31,5 +31,24 @@
         android:layout_below="@+id/HomeToolbar"
         layout="@layout/card_layout"/>
 
+    <ImageView
+        android:id="@+id/AcceptButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/ProfileCard"
+        android:layout_above="@+id/BottomNav"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/ic_acceptbutton"/>
+
+    <ImageView
+        android:id="@+id/DenyButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/ProfileCard"
+        android:layout_above="@+id/BottomNav"
+        android:layout_alignStart="@+id/AcceptButton"
+        android:layout_marginStart="200dp"
+        android:src="@drawable/ic_denybutton"/>
+
 
 </RelativeLayout>

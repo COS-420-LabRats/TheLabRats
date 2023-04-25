@@ -26,8 +26,8 @@
     <string name="last_name_txt">Last Name</string>
     <string-array name="accountTypes">
         <item>Account Type</item>
-        <item>Student</item>
-        <item>Regular</item>
+        <item>On Campus</item>
+        <item>Off Campus</item>
     </string-array>
     <string name="acc_txt">Acc Txt</string>
     <string name="bday_txt">Birthday</string>
@@ -81,10 +81,10 @@
 
     <string-array name="religions">
         <item>Prefer not to say</item>
-        <item>Christianity</item>
+        <item>Christian</item>
         <item>Islam</item>
-        <item>Hinduism</item>
-        <item>Buddhism</item>
+        <item>Hindu</item>
+        <item>Buddhist</item>
         <item>Sikhism</item>
         <item>Judaism</item>
         <item>Atheist</item>
