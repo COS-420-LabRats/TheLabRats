@@ -6,6 +6,7 @@ import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.databinding.ActivitySignInBinding
 import com.example.myapplication.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -78,5 +79,6 @@ class SignUpActivity: AppCompatActivity() {
         }
 
     }
+
 
 }
