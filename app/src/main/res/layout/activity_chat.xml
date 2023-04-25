@@ -31,6 +31,13 @@
         app:title="Messages"
         app:titleMarginStart="30dp" />
 
+    <ImageView
+        android:id="@+id/msgPng"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/MsgToolbar"
+        android:layout_above="@+id/BottomNav"
+        android:src="@drawable/msg_png"/>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -43,12 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="These are text messages.">
 
-        </TextView>
     </ScrollView>
 
 </RelativeLayout>
