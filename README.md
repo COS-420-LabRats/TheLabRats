@@ -1,6 +1,6 @@
 # TheLabRats
 //Main repo for COS420 project.
-//This repository is for an app created by the COS 420 group, "The Lab Rats". The app is "RoomUp", a mobile app designed to connect people looking for roommates. 
+//This repository is for an app created by the COS 420 group, "The Lab Rats". The app is "RoomUp", a social media mobile app designed to connect people looking for roommates. 
 
 //Project Overview: Our app, RoomUp, will aim to connect people who are looking for roommates. In the set-up section of our app, users will be asked basic information, such as age, gender, desired location, and are just looking for a roommate to join them there, or if they are looking for a place to stay in addition to a roommate. Following the profile set-up process, users will be presented with other profiles, including photos and information, one at a time; those users who already have a place to stay will not see profiles of others who also have a place to stay. Users will swipe up on a profile if they are interested in that user, or downwards if they are uninterested. If two users swipe up on each other, they will be “matched”, meaning they will be notified of the match and will now be able to message each other. Then, the users will be able to message each other, and discuss how and if they should become roommates. This app will offer a simple, fun way to connect people to good potential roommates.
 
