@@ -23,23 +23,22 @@ class MainActivity : AppCompatActivity() {
         badgeDrawable.isVisible = true
         badgeDrawable.number = 10
 
-        val home = Intent(this, HomeActivity::class.java)
-        startActivity(home)
+        supportFragmentManager.beginTransaction().replace(R.id.container, HomeFragment()).commit()
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Home -> {
-                    val home = Intent(this, HomeActivity::class.java)
-                    startActivity(home)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, HomeFragment()).commit()
                     true
                 }
                 R.id.Chat -> {
-                    val chat = Intent(this, ChatActivity::class.java)
-                    startActivity(chat)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ChatFragment()).commit()
                     true
                 }
                 R.id.Swipe -> {
-                    val swipe = Intent(this, SwipeActivity::class.java)
-                    startActivity(swipe)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, SwipeFragment()).commit()
                     true
                 }
                 else -> false

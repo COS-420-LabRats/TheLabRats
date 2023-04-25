@@ -16,7 +16,7 @@
 
         <menu>
             <item
-                android:id="@+id/ProfileCardUpdate"
+                android:id="@+id/ProfileCard"
                 android:title="Update Profile Card"
                 app:showAsAction="never"/>
             <item

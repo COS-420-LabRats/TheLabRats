@@ -1,36 +1,46 @@
 package com.example.myapplication
 
 import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class StudentActivity : AppCompatActivity() {
+
+class StudentFragment : Fragment() {
 
     private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student)
-        FirebaseApp.initializeApp(this)
+        FirebaseApp.initializeApp(requireContext())
         db = FirebaseFirestore.getInstance()
-        loadData()
-        val saveButton = findViewById<Button>(R.id.save_button)
-        saveButton.setOnClickListener {
-            saveProfile()
-            Toast.makeText(this, "Account Information Saved.", Toast.LENGTH_LONG).show()
-            val home = Intent(this, HomeActivity::class.java)
-            startActivity(home)
-        }
     }
 
-    private fun loadData() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_student, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val saveButton = view.findViewById<Button>(R.id.save_button)
+        saveButton.setOnClickListener {
+            saveProfile()
+            Toast.makeText(context, "Account Information Saved.", Toast.LENGTH_LONG).show()
+        }
+
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -39,7 +49,7 @@ class StudentActivity : AppCompatActivity() {
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
                         val profile = documentSnapshot.data
-                        val fullNameTextView = findViewById<TextView>(R.id.fullName)
+                        val fullNameTextView = view.findViewById<TextView>(R.id.fullName)
                         val firstName = profile?.get("firstName").toString()
                         val lastName = profile?.get("lastName").toString()
                         fullNameTextView.text = "$firstName $lastName"
@@ -52,6 +62,7 @@ class StudentActivity : AppCompatActivity() {
             Log.w(TAG, "Error: current user is null")
         }
 
+
         if (currentUser != null) {
             db.collection("AccountInfo").document(currentUser.uid)
                 .get()
@@ -59,31 +70,31 @@ class StudentActivity : AppCompatActivity() {
                     if (documentSnapshot.exists()) {
                         val accountInfo = documentSnapshot.data
 
-                        val dormSpinner = findViewById<Spinner>(R.id.hasDorm)
+                        val dormSpinner = view.findViewById<Spinner>(R.id.hasDorm)
                         val dormAdapter = dormSpinner.adapter as ArrayAdapter<String>
                         val dormPosition =
                             dormAdapter.getPosition(accountInfo?.get("hasDorm").toString())
                         dormSpinner.setSelection(dormPosition)
 
-                        val universityTextView = findViewById<TextView>(R.id.university)
+                        val universityTextView = view.findViewById<TextView>(R.id.university)
                         universityTextView.text = accountInfo?.get("university").toString()
 
-                        val gradeSpinner = findViewById<Spinner>(R.id.grade)
+                        val gradeSpinner = view.findViewById<Spinner>(R.id.grade)
                         val gradeAdapter = gradeSpinner.adapter as ArrayAdapter<String>
                         val crimePosition = gradeAdapter.getPosition(
                             accountInfo?.get("grade").toString())
                         gradeSpinner.setSelection(crimePosition)
 
-                        val majorTextView = findViewById<TextView>(R.id.major)
+                        val majorTextView = view.findViewById<TextView>(R.id.major)
                         majorTextView.text = accountInfo?.get("major").toString()
 
-                        val religionSpinner = findViewById<Spinner>(R.id.religion)
+                        val religionSpinner = view.findViewById<Spinner>(R.id.religion)
                         val religionAdapter = religionSpinner.adapter as ArrayAdapter<String>
                         val religionPosition = religionAdapter.getPosition(
                             accountInfo?.get("religion").toString())
                         religionSpinner.setSelection(religionPosition)
 
-                        val hobbiesTextView = findViewById<TextView>(R.id.hobbies)
+                        val hobbiesTextView = view.findViewById<TextView>(R.id.hobbies)
                         hobbiesTextView.text = accountInfo?.get("hobbies").toString()
                     }
                 }
@@ -93,21 +104,25 @@ class StudentActivity : AppCompatActivity() {
         } else {
             Log.w(TAG, "Error: current user is null")
         }
+
     }
 
     private fun saveProfile() {
-        val dormTypeSpinner = findViewById<Spinner>(R.id.hasDorm)
+        val view = requireView()
+
+        val dormTypeSpinner = view.findViewById<Spinner>(R.id.hasDorm)
         val dorm = dormTypeSpinner.selectedItem.toString()
-        val universityField = findViewById<AppCompatEditText>(R.id.university)
+        val universityField = view.findViewById<AppCompatEditText>(R.id.university)
         val university = universityField.text.toString()
-        val gradeSpinner = findViewById<Spinner>(R.id.grade)
+        val gradeSpinner = view.findViewById<Spinner>(R.id.grade)
         val grade = gradeSpinner.selectedItem.toString()
-        val majorField = findViewById<AppCompatEditText>(R.id.major)
+        val majorField = view.findViewById<AppCompatEditText>(R.id.major)
         val major = majorField.text.toString()
-        val religionTypeSpinner = findViewById<Spinner>(R.id.religion)
+        val religionTypeSpinner = view.findViewById<Spinner>(R.id.religion)
         val religion = religionTypeSpinner.selectedItem.toString()
-        val hobbiesField = findViewById<AppCompatEditText>(R.id.hobbies)
+        val hobbiesField = view.findViewById<AppCompatEditText>(R.id.hobbies)
         val hobbies = hobbiesField.text.toString()
+
 
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -148,5 +163,4 @@ class StudentActivity : AppCompatActivity() {
             Log.w(TAG, "Error: current user is null")
         }
     }
-
 }
