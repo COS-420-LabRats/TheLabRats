@@ -209,7 +209,4 @@ class ProfileActivity : AppCompatActivity() {
             Log.w(TAG, "Error: current user is null")
         }
     }
-
-
-
 }
