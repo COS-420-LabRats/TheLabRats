@@ -39,7 +39,7 @@ class SignUpActivity: AppCompatActivity() {
 
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener{
                         if (it.isSuccessful){
-                            val intent = Intent(this, ProfileActivity::class.java)
+                            val intent = Intent(this, SignInActivity::class.java)
                             startActivity(intent)
                             finish() // finish the SignUpActivity so the user cannot navigate back to it
 

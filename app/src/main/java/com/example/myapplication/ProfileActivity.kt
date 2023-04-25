@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
@@ -61,9 +62,10 @@ class ProfileActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             saveProfile()
             Toast.makeText(this, "Profile Information Saved.", Toast.LENGTH_LONG).show()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, HomeFragment())
-                .commit()
+            // Create an instance of the Fragment you want to navigate to
+            val home = Intent(this, HomeActivity::class.java)
+            startActivity(home)
+
         }
 
         val auth = FirebaseAuth.getInstance()
@@ -106,7 +108,7 @@ class ProfileActivity : AppCompatActivity() {
 
                         val genderSpinner = findViewById<Spinner>(R.id.gender_spinner)
                         val genderAdapter = genderSpinner.adapter as ArrayAdapter<String>
-                        val genderPosition = genderAdapter.getPosition(profile?.get("gennder").toString())
+                        val genderPosition = genderAdapter.getPosition(profile?.get("gender").toString())
                         genderSpinner.setSelection(genderPosition)
 
                         val bioTextView = findViewById<TextView>(R.id.bio_txt)

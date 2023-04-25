@@ -33,6 +33,18 @@
             android:exported="true" />
 
         <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".SwipeActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".ProfileActivity"
             android:exported="true" />
 
@@ -40,6 +52,9 @@
             android:name=".StudentActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".RegularActivity"
+            android:exported="true" />
 
     </application>
 

@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -24,6 +25,8 @@ class StudentActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             saveProfile()
             Toast.makeText(this, "Account Information Saved.", Toast.LENGTH_LONG).show()
+            val home = Intent(this, HomeActivity::class.java)
+            startActivity(home)
         }
     }
 
