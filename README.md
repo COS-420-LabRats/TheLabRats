@@ -52,7 +52,7 @@
 //Citations: 
 Bottom menu bar: https://www.youtube.com/watch?v=EwfLZsSSElE
 Top ToolBar: https://www.youtube.com/watch?v=zOsWCAsG2Xo 
-Sign In & Set Up: https://www.youtube.com/watch?v=idbxxkF1l6k
+Sign In and Set Up: https://www.youtube.com/watch?v=idbxxkF1l6k
 
 
  
