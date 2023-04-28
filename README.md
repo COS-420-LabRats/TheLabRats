@@ -31,7 +31,7 @@
 //// When using the BoM, you don't specify versions in Firebase library dependencies
 //// Add the dependency for the Firebase SDK for Google Analytics
 //// Make sure your local.properties has the file path to your Sdk folder 
-////     Example: (sdk.dir=C\:\\Users\\USERNAME\\AppData\\Local\\Android\\Sdk)
+////     Example: (sdk.dir=C\:\\Users\\INSERT_USERNAME\\AppData\\Local\\Android\\Sdk)
 
 //implementation 'com.google.firebase:firebase-analytics-ktx'
 //// dependencies for Firebase Authentication and Cloud Firestore
